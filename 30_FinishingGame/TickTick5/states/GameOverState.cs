@@ -22,9 +22,9 @@ class GameOverState : GameObjectList
         GameEnvironment.GameStateManager.SwitchTo("playingState");
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        playingState.Update(gameTime);
+        playingState.Update(gameTime, camera);
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

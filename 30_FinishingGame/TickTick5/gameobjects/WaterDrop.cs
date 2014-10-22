@@ -10,7 +10,7 @@ class WaterDrop : SpriteGameObject
     {
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
         double t = gameTime.TotalGameTime.TotalSeconds * 3.0f + Position.X;
         bounce = (float)Math.Sin(t) * 0.2f;

@@ -22,9 +22,9 @@ class Rocket : AnimatedGameObject
         this.spawnTime = GameEnvironment.Random.NextDouble() * 5;
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         if (spawnTime > 0)
         {
             spawnTime -= gameTime.ElapsedGameTime.TotalSeconds;

@@ -14,9 +14,9 @@ class Clouds : GameObjectList
         }
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         foreach (GameObject obj in gameObjects)
         {
             SpriteGameObject c = obj as SpriteGameObject;

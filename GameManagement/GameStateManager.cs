@@ -45,10 +45,10 @@ public class GameStateManager : IGameLoopObject
             currentGameState.HandleInput(inputHelper);
     }
 
-    public void Update(GameTime gameTime)
+    public void Update(GameTime gameTime, Camera2D camera)
     {
         if (currentGameState != null)
-            currentGameState.Update(gameTime);
+            currentGameState.Update(gameTime, camera);
     }
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -6,7 +6,8 @@ partial class Level : GameObjectList
     protected Button quitButton;
 
     public Level(int levelIndex)
-    {
+    {        
+        
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
         SpriteGameObject background_main = new SpriteGameObject("Backgrounds/spr_sky");

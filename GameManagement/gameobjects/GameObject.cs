@@ -22,7 +22,7 @@ public abstract class GameObject : IGameLoopObject
     {
     }
 
-    public virtual void Update(GameTime gameTime)
+    public virtual void Update(GameTime gameTime, Camera2D camera)
     {
         position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
     }

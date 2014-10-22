@@ -59,10 +59,10 @@ public class GameObjectList : GameObject
             gameObjects[i].HandleInput(inputHelper);
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
         foreach (GameObject obj in gameObjects)
-            obj.Update(gameTime);
+            obj.Update(gameTime, camera);
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

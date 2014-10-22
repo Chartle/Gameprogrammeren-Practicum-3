@@ -56,9 +56,9 @@ class PlayingState : IGameLoopObject
         CurrentLevel.HandleInput(inputHelper);
     }
 
-    public virtual void Update(GameTime gameTime)
+    public virtual void Update(GameTime gameTime, Camera2D camera)
     {
-        CurrentLevel.Update(gameTime);
+        CurrentLevel.Update(gameTime, camera);
         if (CurrentLevel.GameOver)
             GameEnvironment.GameStateManager.SwitchTo("gameOverState");
         else if (CurrentLevel.Completed)

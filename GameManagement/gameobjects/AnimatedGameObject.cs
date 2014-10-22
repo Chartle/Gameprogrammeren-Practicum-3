@@ -29,12 +29,12 @@ public class AnimatedGameObject : SpriteGameObject
         origin = new Vector2(sprite.Width / 2, sprite.Height);        
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
         if (sprite == null)
             return;
         Current.Update(gameTime);
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
     }
 
     public Animation Current

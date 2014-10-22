@@ -33,9 +33,9 @@ class LevelButton : GameObjectList
             levels_solved.BoundingBox.Contains((int)inputHelper.MousePosition.X, (int)inputHelper.MousePosition.Y);
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         spr_lock.Visible = level.Locked;
         levels_solved.Visible = level.Solved;
         levels_unsolved.Visible = !level.Solved;

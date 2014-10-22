@@ -19,9 +19,9 @@ class Turtle : AnimatedGameObject
         idleTime = 5.0f;
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         if (sneezeTime > 0)
         {
             this.PlayAnimation("sneeze");

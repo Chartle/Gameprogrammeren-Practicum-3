@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework;
 
 class UnpredictableEnemy : PatrollingEnemy
 {
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         if (waitTime > 0 || GameEnvironment.Random.NextDouble() > 0.01)
             return;
         TurnAround();

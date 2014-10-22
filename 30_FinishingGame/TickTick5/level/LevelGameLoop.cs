@@ -2,7 +2,7 @@
 
 partial class Level : GameObjectList
 {
-
+    
     public override void HandleInput(InputHelper inputHelper)
     {
         base.HandleInput(inputHelper);
@@ -13,12 +13,14 @@ partial class Level : GameObjectList
         }      
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
 
         TimerGameObject timer = this.Find("timer") as TimerGameObject;
         Player player = this.Find("player") as Player;
+        
+        camera.LookAt(player.Position);
 
         // check if we died
         if (!player.IsAlive)

@@ -15,7 +15,7 @@ class TimerGameObject : TextGameObject
         this.running = true;
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
         if (!running)
             return;

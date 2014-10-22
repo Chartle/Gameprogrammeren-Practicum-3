@@ -14,7 +14,7 @@ class VisibilityTimer : GameObject
         this.target = target;
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
         timeleft -= (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (timeleft <= 0)

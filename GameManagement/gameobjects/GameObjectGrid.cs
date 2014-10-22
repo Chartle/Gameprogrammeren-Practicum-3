@@ -75,10 +75,10 @@ public class GameObjectGrid : GameObject
             obj.HandleInput(inputHelper);
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
         foreach (GameObject obj in grid)
-            obj.Update(gameTime);
+            obj.Update(gameTime, camera);
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

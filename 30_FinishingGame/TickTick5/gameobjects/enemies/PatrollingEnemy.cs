@@ -13,9 +13,9 @@ class PatrollingEnemy : AnimatedGameObject
         this.PlayAnimation("default");
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         if (waitTime > 0)
         {
             waitTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;

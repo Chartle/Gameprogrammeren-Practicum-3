@@ -6,10 +6,10 @@ using Microsoft.Xna.Framework.Input;
 public class GameEnvironment : Game
 {
     protected GraphicsDeviceManager graphics;
-    protected SpriteBatch spriteBatch;
+    protected SpriteBatch spriteBatchCamera, spriteBatchOverlay;
     protected InputHelper inputHelper;
     protected Matrix spriteScale;
-    
+    protected Camera2D camera;
     protected static Point screen;
     protected static GameStateManager gameStateManager;
     protected static Random random;
@@ -83,8 +83,12 @@ public class GameEnvironment : Game
 
     protected override void LoadContent()
     {
+        camera = new Camera2D(GraphicsDevice.Viewport);
+        camera.Limits = new Rectangle(0, 0, Screen.X + 300, Screen.Y);
+        
         DrawingHelper.Initialize(this.GraphicsDevice);
-        spriteBatch = new SpriteBatch(GraphicsDevice);
+        spriteBatchCamera = new SpriteBatch(GraphicsDevice);
+        spriteBatchOverlay = new SpriteBatch(GraphicsDevice);
     }
 
     protected void HandleInput()
@@ -100,14 +104,14 @@ public class GameEnvironment : Game
     protected override void Update(GameTime gameTime)
     {
         HandleInput();
-        gameStateManager.Update(gameTime);
+        gameStateManager.Update(gameTime, camera);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
-        spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, spriteScale);
-        gameStateManager.Draw(gameTime, spriteBatch);
-        spriteBatch.End();
+        spriteBatchCamera.Begin(SpriteSortMode.Deferred, null, null, null, null, null,camera.GetTransformation(GraphicsDevice, spriteScale, Vector2.One));
+        gameStateManager.Draw(gameTime, spriteBatchCamera);
+        spriteBatchCamera.End();
     }
 }

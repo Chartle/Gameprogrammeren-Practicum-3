@@ -58,9 +58,9 @@ partial class Player : AnimatedGameObject
             Jump();
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Camera2D camera)
     {
-        base.Update(gameTime);
+        base.Update(gameTime, camera);
         if (!finished && isAlive)
         {
             if (isOnTheGround)
@@ -83,7 +83,7 @@ partial class Player : AnimatedGameObject
             if (BoundingBox.Top >= tiles.Rows * tiles.CellHeight)
                 this.Die(true);
         }
-
+        
         DoPhysics();
     }
 
