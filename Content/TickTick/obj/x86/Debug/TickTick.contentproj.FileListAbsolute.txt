@@ -1,0 +1,2 @@
+D:\Learning CSharp\Content\TickTick\obj\x86\Debug\TickTick.contentprojResolveAssemblyReference.cache
+D:\My Projects\Gameprogrammeren Practica\Gameprogrammeren-Practicum-3\Content\TickTick\obj\x86\Debug\TickTick.contentprojResolveAssemblyReference.cache
