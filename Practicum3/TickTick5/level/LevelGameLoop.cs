@@ -20,9 +20,6 @@ partial class Level : GameObjectList
         TimerGameObject timer = this.Find("timer") as TimerGameObject;
         Player player = this.Find("player") as Player;
 
-        camera.Limits = new Rectangle(0, 0, width * tiles.CellWidth, height * tiles.CellHeight);
-
-        camera.LookAt(player.Position);
 
         // check if we died
         if (!player.IsAlive)

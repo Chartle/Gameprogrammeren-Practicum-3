@@ -13,4 +13,19 @@ public class Camera2D
     {
         this.viewport = viewport;
     }
+
+    internal Matrix GetTransformation(GraphicsDevice GraphicsDevice, Matrix spriteScale, Vector2 vector2)
+    {
+        throw new NotImplementedException();
+    }
+
+
+    public void LookAt(Vector2 vector2)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Rectangle Limits { get; set; }
+
+    public Vector2 Position { get; set; }
 }
