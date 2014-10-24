@@ -84,8 +84,7 @@ public class GameEnvironment : Game
     protected override void LoadContent()
     {
         camera = new Camera2D(GraphicsDevice.Viewport);
-        camera.Limits = new Rectangle(0, 0, Screen.X + 300, Screen.Y);
-        
+                
         DrawingHelper.Initialize(this.GraphicsDevice);
         spriteBatchCamera = new SpriteBatch(GraphicsDevice);
         spriteBatchOverlay = new SpriteBatch(GraphicsDevice);
