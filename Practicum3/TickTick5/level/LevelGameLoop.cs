@@ -2,7 +2,9 @@
 
 partial class Level : GameObjectList
 {
-    
+    SpriteGameObject testobj = new SpriteGameObject("Sprites/Player/spr_explode@5x5", 190, "test", 8);
+    Vector2 cameraPos, cameraOrig;
+
     public override void HandleInput(InputHelper inputHelper)
     {
         base.HandleInput(inputHelper);
@@ -17,10 +19,18 @@ partial class Level : GameObjectList
     {
         base.Update(gameTime, camera);
 
-        TimerGameObject timer = this.Find("timer") as TimerGameObject;
         Player player = this.Find("player") as Player;
+        camera.Limits = new Rectangle(0, 0, tiles.CellWidth * width, tiles.CellHeight * height);
+        camera.LookAt(player.Position);
+        cameraPos = camera.Position;
+        cameraOrig = camera.Origin;
+        
+        timer.Position = cameraPos + new Vector2(25,50);
+        timerBackground.Position = cameraPos + new Vector2(10, 25);
 
+        hintfield.Position = cameraPos + new Vector2((GameEnvironment.Screen.X - hint_frame.Width) / 2, 35);
 
+        quitButton.DrawPosition = cameraPos + new Vector2(GameEnvironment.Screen.X - quitButton.Width - 10, 35);
         // check if we died
         if (!player.IsAlive)
             timer.Running = false;

@@ -25,7 +25,6 @@ class HelpState : GameObjectList
 
     public override void Update(GameTime gameTime, Camera2D camera)
     {
-        camera.Position = Vector2.Zero;
         base.Update(gameTime, camera);
     }
 }

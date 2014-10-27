@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 public class GameEnvironment : Game
 {
@@ -16,6 +16,7 @@ public class GameEnvironment : Game
     protected static AssetManager assetManager;
     protected static GameSettingsManager gameSettingsManager;
 
+    protected bool setCamera;
     public GameEnvironment()
     {
         graphics = new GraphicsDeviceManager(this);
@@ -26,6 +27,7 @@ public class GameEnvironment : Game
         random = new Random();
         assetManager = new AssetManager(Content);
         gameSettingsManager = new GameSettingsManager();
+        setCamera = false;
     }
 
     public static Point Screen
@@ -84,7 +86,7 @@ public class GameEnvironment : Game
     protected override void LoadContent()
     {
         camera = new Camera2D(GraphicsDevice.Viewport);
-                
+        camera.Limits = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
         DrawingHelper.Initialize(this.GraphicsDevice);
         spriteBatchCamera = new SpriteBatch(GraphicsDevice);
         spriteBatchOverlay = new SpriteBatch(GraphicsDevice);
@@ -97,11 +99,18 @@ public class GameEnvironment : Game
             this.Exit();
         if (inputHelper.KeyPressed(Keys.F5))
             SetFullScreen(!graphics.IsFullScreen);
+        
         gameStateManager.HandleInput(inputHelper);
     }
 
     protected override void Update(GameTime gameTime)
     {
+        if (!setCamera)
+        {
+            camera.Bounds = new Rectangle(GraphicsDevice.Viewport.X, GraphicsDevice.Viewport.Y, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            camera.Origin = new Vector2(GraphicsDevice.Viewport.Width / 2.0f, GraphicsDevice.Viewport.Height / 2.0f);
+            setCamera = true;
+        }
         HandleInput();
         gameStateManager.Update(gameTime, camera);
     }
@@ -109,7 +118,7 @@ public class GameEnvironment : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
-        spriteBatchCamera.Begin(SpriteSortMode.Deferred, null, null, null, null, null,camera.GetTransformation(GraphicsDevice, spriteScale, Vector2.One));
+        spriteBatchCamera.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.TransformMatrix * spriteScale);
         gameStateManager.Draw(gameTime, spriteBatchCamera);
         spriteBatchCamera.End();
     }

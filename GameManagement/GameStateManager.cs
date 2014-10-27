@@ -49,6 +49,10 @@ public class GameStateManager : IGameLoopObject
     {
         if (currentGameState != null)
             currentGameState.Update(gameTime, camera);
+        if(currentGameState != GetGameState("playingState"))
+        {
+            camera.Origin = new Vector2(GameEnvironment.Screen.X, GameEnvironment.Screen.Y) / 2;
+        }
     }
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -4,6 +4,8 @@ partial class Level : GameObjectList
 {
     protected bool locked, solved;
     protected Button quitButton;
+    protected SpriteGameObject timerBackground;
+    protected TimerGameObject timer;
 
     public Level(int levelIndex)
     {        
@@ -13,7 +15,7 @@ partial class Level : GameObjectList
         SpriteGameObject background_main = new SpriteGameObject("Backgrounds/spr_sky");
         background_main.Position = new Vector2(0, GameEnvironment.Screen.Y - background_main.Height);
         backgrounds.Add(background_main);
-
+        
         // add a few random mountains
         for (int i = 0; i < 5; i++)
         {
@@ -26,10 +28,10 @@ partial class Level : GameObjectList
         backgrounds.Add(clouds);
         this.Add(backgrounds);
 
-        SpriteGameObject timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
+        timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
         timerBackground.Position = new Vector2(10, 10);
         this.Add(timerBackground);
-        TimerGameObject timer = new TimerGameObject(101, "timer");
+        timer = new TimerGameObject(101, "timer");
         timer.Position = new Vector2(25, 30);
         this.Add(timer);
 

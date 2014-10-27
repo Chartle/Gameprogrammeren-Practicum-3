@@ -6,6 +6,9 @@ partial class Level : GameObjectList
 {
     int width, height;
     TileField tiles;
+    GameObjectList hintfield;
+    SpriteGameObject hint_frame;
+
     public void LoadTiles(string path)
     {
         List<string> textlines = new List<string>();
@@ -20,17 +23,20 @@ partial class Level : GameObjectList
         height = textlines.Count - 1;
         tiles = new TileField(height, width, 1, "tiles");
 
-        GameObjectList hintfield = new GameObjectList(100);
+        hintfield = new GameObjectList(100);
         this.Add(hintfield);
         string hint = textlines[textlines.Count - 1];
-        SpriteGameObject hint_frame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
+        
+        hint_frame = new SpriteGameObject("Overlays/spr_frame_hint", 1);
         hintfield.Position = new Vector2((GameEnvironment.Screen.X - hint_frame.Width) / 2, 10);
         hintfield.Add(hint_frame);
+        
         TextGameObject hintText = new TextGameObject("Fonts/HintFont", 2);
         hintText.Text = textlines[textlines.Count - 1];
         hintText.Position = new Vector2(120, 25);
         hintText.Color = Color.Black;
         hintfield.Add(hintText);
+        
         VisibilityTimer hintTimer = new VisibilityTimer(hintfield, 1, "hintTimer");
         this.Add(hintTimer);
 
