@@ -431,7 +431,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\My Projects\Gameprogrammeren Practica\Gameprogrammeren-Practicum-3\Practicum3\TickTick5\bin\x86\Debug\Content\Overlays\spr_gameover.xnb</Output>
-      <Time>2012-06-04T21:53:12+02:00</Time>
+      <Time>2014-10-27T12:52:59.2262783+01:00</Time>
     </Item>
     <Item>
       <Source>Overlays\spr_welldone.png</Source>
@@ -440,7 +440,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\My Projects\Gameprogrammeren Practica\Gameprogrammeren-Practicum-3\Practicum3\TickTick5\bin\x86\Debug\Content\Overlays\spr_welldone.xnb</Output>
-      <Time>2012-06-04T21:53:12+02:00</Time>
+      <Time>2014-10-27T12:58:10.8428603+01:00</Time>
     </Item>
     <Item>
       <Source>Overlays\spr_frame_hint.png</Source>

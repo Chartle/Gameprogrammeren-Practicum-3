@@ -6,10 +6,13 @@ public class SpriteGameObject : GameObject
 {
     protected SpriteSheet sprite;
     protected Vector2 origin;
+    protected float scale, rotation;
 
-    public SpriteGameObject(string assetname, int layer = 0, string id = "", int sheetIndex = 0)
+    public SpriteGameObject(string assetname, int layer = 0, string id = "", int sheetIndex = 0, float scale = 1.0f, float rotation = 0.0f)
         : base(layer, id)
     {
+        this.rotation = rotation;
+        this.scale = scale;
         if (assetname != "")
             sprite = new SpriteSheet(assetname, sheetIndex);
         else
@@ -20,7 +23,7 @@ public class SpriteGameObject : GameObject
     {
         if (!visible || sprite == null)
             return;
-        sprite.Draw(spriteBatch, this.GlobalPosition, origin);
+        sprite.Draw(spriteBatch, this.GlobalPosition, origin, scale, rotation);
     }
 
     public SpriteSheet Sprite
@@ -59,6 +62,18 @@ public class SpriteGameObject : GameObject
     {
         get { return this.origin; }
         set { this.origin = value; }
+    }
+
+    public float Scale
+    {
+        get { return scale; }
+        set { scale = value; }
+    }
+
+    public float Rotation
+    {
+        get { return rotation; }
+        set { rotation = value; }
     }
 
     public override Rectangle BoundingBox

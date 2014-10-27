@@ -12,7 +12,7 @@ partial class Level : GameObjectList
         
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
-        SpriteGameObject background_main = new SpriteGameObject("Backgrounds/spr_sky");
+        SpriteGameObject background_main = new SpriteGameObject("Backgrounds/spr_sky", 0, "sky", 0, 2.0f);
         background_main.Position = new Vector2(0, GameEnvironment.Screen.Y - background_main.Height);
         backgrounds.Add(background_main);
         

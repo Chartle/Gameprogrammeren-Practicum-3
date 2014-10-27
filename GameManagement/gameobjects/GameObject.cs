@@ -7,17 +7,15 @@ public abstract class GameObject : IGameLoopObject
     protected Vector2 position, velocity;
     protected int layer;
     protected string id;
-    protected bool visible, overlayObj;
+    protected bool visible;
 
     public GameObject(int layer = 0, string id = "")
     {
         this.layer = layer;
         this.id = id;
         this.position = Vector2.Zero;
-        this.velocity = Vector2.Zero; 
+        this.velocity = Vector2.Zero;
         this.visible = true;
-        this.overlayObj = false;
-
     }
 
     public virtual void HandleInput(InputHelper inputHelper)
@@ -103,11 +101,6 @@ public abstract class GameObject : IGameLoopObject
         set { visible = value; }
     }
 
-    public bool OverlayObj
-    {
-        get { return overlayObj; }
-        set { overlayObj = value; }
-    }
     public virtual Rectangle BoundingBox
     {
         get

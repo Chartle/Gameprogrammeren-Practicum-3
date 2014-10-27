@@ -50,7 +50,7 @@ partial class Player : AnimatedGameObject
             velocity.X = -walkingSpeed;
         else if (inputHelper.IsKeyDown(Keys.Right) || inputHelper.IsKeyDown(Keys.D))
             velocity.X = walkingSpeed;
-        else if (!walkingOnIce && isOnTheGround)
+        else if (!walkingOnIce && (inputHelper.KeyReleased(Keys.Right) || inputHelper.KeyReleased(Keys.D) || inputHelper.KeyReleased(Keys.Left) || inputHelper.KeyReleased(Keys.A)))
             velocity.X = 0.0f;
         if (velocity.X != 0.0f)
             Mirror = velocity.X < 0;

@@ -49,7 +49,7 @@ public class GameStateManager : IGameLoopObject
     {
         if (currentGameState != null)
             currentGameState.Update(gameTime, camera);
-        if(currentGameState != GetGameState("playingState"))
+        if(currentGameState != GetGameState("playingState") && currentGameState != GetGameState("gameOverState") && currentGameState != GetGameState("levelFinishedState"))
         {
             camera.Origin = new Vector2(GameEnvironment.Screen.X, GameEnvironment.Screen.Y) / 2;
         }

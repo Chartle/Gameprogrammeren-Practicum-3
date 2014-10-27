@@ -16,7 +16,7 @@ class LevelFinishedState : GameObjectList
 
     public override void HandleInput(InputHelper inputHelper)
     {
-        if (!inputHelper.KeyPressed(Keys.Space))
+        if (!inputHelper.KeyPressed(Keys.Enter))
             return;
         GameEnvironment.GameStateManager.SwitchTo("playingState");
         (playingState as PlayingState).NextLevel();
