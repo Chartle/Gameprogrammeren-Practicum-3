@@ -119,7 +119,7 @@ partial class Level : GameObjectList
             case 'A': enemy = new UnpredictableEnemy(); break;
             case 'B': enemy = new PlayerFollowingEnemy(); break;
             case 'C': 
-            default:         enemy = new PatrollingEnemy(); break;
+            default: enemy = new PatrollingEnemy(); break;
         }
         enemy.Position = new Vector2(((float)x + 0.5f) * tiles.CellWidth, (y + 1) * tiles.CellHeight);
         enemies.Add(enemy);

@@ -29,7 +29,7 @@ public class SpriteSheet
             this.sheetRows = int.Parse(colrow[1]);
     }
 
-    public void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2 origin, float scale = 1.0f, float rotation = 0.0f)
+    public void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2 origin, float scaleX = 1.0f, float scaleY = 1.0f, float rotation = 0.0f)
     {
         int columnIndex = sheetIndex % sheetColumns;
         int rowIndex = sheetIndex / sheetColumns % sheetRows;
@@ -39,7 +39,7 @@ public class SpriteSheet
             spriteEffects = SpriteEffects.FlipHorizontally;
         
         spriteBatch.Draw(sprite, position, spritePart, Color.White,
-        rotation, origin, scale, spriteEffects, 0.0f);
+        rotation, origin, new Vector2(scaleX, scaleY), spriteEffects, 0.0f);
     }
 
     public Color GetPixelColor(int x, int y)

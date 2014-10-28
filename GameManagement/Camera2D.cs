@@ -74,8 +74,8 @@ public class Camera2D
     { 
         get {
             return 
-                //Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
                 Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) *
+                Matrix.CreateTranslation(new Vector3())*
                 Matrix.CreateRotationZ(Rotation) *
                 Matrix.CreateScale(Zoom) *
                 Matrix.CreateTranslation(new Vector3(Bounds.Width * 0.5f, Bounds.Height * 0.5f, 0));

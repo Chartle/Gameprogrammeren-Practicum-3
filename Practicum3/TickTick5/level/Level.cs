@@ -4,7 +4,7 @@ partial class Level : GameObjectList
 {
     protected bool locked, solved;
     protected Button quitButton;
-    protected SpriteGameObject timerBackground;
+    protected SpriteGameObject timerBackground, background_main;
     protected TimerGameObject timer;
 
     public Level(int levelIndex)
@@ -12,20 +12,18 @@ partial class Level : GameObjectList
         
         // load the backgrounds
         GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
-        SpriteGameObject background_main = new SpriteGameObject("Backgrounds/spr_sky", 0, "sky", 0, 2.0f);
+        background_main = new SpriteGameObject("Backgrounds/spr_sky");
         background_main.Position = new Vector2(0, GameEnvironment.Screen.Y - background_main.Height);
         backgrounds.Add(background_main);
         
         // add a few random mountains
         for (int i = 0; i < 5; i++)
         {
-            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1);
+            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1, "mountain" + i, 0, 2, 2);
             mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * GameEnvironment.Screen.X - mountain.Width / 2, GameEnvironment.Screen.Y - mountain.Height);
             backgrounds.Add(mountain);
         }
 
-        Clouds clouds = new Clouds(2);
-        backgrounds.Add(clouds);
         this.Add(backgrounds);
 
         timerBackground = new SpriteGameObject("Sprites/spr_timer", 100);
@@ -44,6 +42,12 @@ partial class Level : GameObjectList
         this.Add(new GameObjectList(2, "enemies"));
 
         this.LoadTiles("Content/Levels/" + levelIndex + ".txt");
+        foreach(SpriteGameObject bg in backgrounds.Objects)
+        {
+            bg.Scale = new Vector2(width/15, height/10);
+        }
+        Clouds clouds = new Clouds(2);
+        backgrounds.Add(clouds);
     }
 
     public bool Completed

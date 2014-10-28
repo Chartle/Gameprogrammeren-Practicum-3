@@ -49,6 +49,12 @@ class TimerGameObject : TextGameObject
         set { multiplier = value; }
     }
 
+    public TimeSpan TimeLeft
+    {
+        get { return timeLeft; }
+        set { timeLeft = value; }
+    }
+
     public bool GameOver
     {
         get { return (timeLeft.Ticks <= 0); }

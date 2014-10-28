@@ -58,7 +58,9 @@ partial class Player :  AnimatedGameObject
                     }
                 }
                 if (tileType == TileType.Normal || isOnTheGround)
-                    position.Y += depth.Y + 1;             
+                {
+                    position.Y += depth.Y + 1;
+                }
             }
         position = new Vector2((float)Math.Floor(position.X), (float)Math.Floor(position.Y));
         previousYPosition = position.Y;
