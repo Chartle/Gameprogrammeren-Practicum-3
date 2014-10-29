@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 public class SpriteGameObject : GameObject
 {
     protected SpriteSheet sprite;
-    protected Vector2 origin, scale;
+    protected Vector2 origin, scale, drawPosition;
     protected float rotation;
 
     public SpriteGameObject(string assetname, int layer = 0, string id = "", int sheetIndex = 0, float scaleX = 1.0f, float scaleY = 1.0f, float rotation = 0.0f)
@@ -17,13 +17,14 @@ public class SpriteGameObject : GameObject
             sprite = new SpriteSheet(assetname, sheetIndex);
         else
             sprite = null;
+        drawPosition = Vector2.Zero;
     }    
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
         if (!visible || sprite == null)
             return;
-        sprite.Draw(spriteBatch, this.GlobalPosition, origin, scale.X, scale.Y, rotation);
+        sprite.Draw(spriteBatch, this.GlobalPosition + drawPosition, origin, scale.X, scale.Y, rotation);
     }
 
     public SpriteSheet Sprite
@@ -63,7 +64,13 @@ public class SpriteGameObject : GameObject
         get { return this.origin; }
         set { this.origin = value; }
     }
-
+    
+    public Vector2 DrawPosition
+    {
+        get { return this.drawPosition; }
+        set { this.drawPosition = value; }
+    }
+    
     public Vector2 Scale
     {
         get { return scale; }

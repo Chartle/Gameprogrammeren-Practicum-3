@@ -73,7 +73,7 @@ public class Camera2D
     public Matrix TransformMatrix
     { 
         get {
-            return 
+            return
                 Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) *
                 Matrix.CreateRotationZ(Rotation) *
                 Matrix.CreateScale(Zoom) *

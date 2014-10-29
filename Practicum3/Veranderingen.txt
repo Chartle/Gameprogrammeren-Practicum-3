@@ -4,3 +4,4 @@ Camera toegevoegd
 GAMEPLAY:
 Springen nu terwijl springknop is ingedrukt in plaats van wanneer springknop ingedrukt wordt
 Beweging alleen terwijl bewegingsknoppen zijn ingedrukt, ook in de lucht (behalve wanneer er van ice gesprongen wordt)
+Sparky enemy nu alleen gevaarlijk tijdens elecrocuteren? ipv ook als hij valt/omhoog gaat

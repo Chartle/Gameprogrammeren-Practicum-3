@@ -33,18 +33,16 @@ partial class Level : GameObjectList
         timerBackground.Position = cameraPos + new Vector2(10, 25);
         hintfield.Position = cameraPos + new Vector2((GameEnvironment.Screen.X - hint_frame.Width) / 2, 35);
         quitButton.DrawPosition = cameraPos + new Vector2(GameEnvironment.Screen.X - quitButton.Width - 10, 35);
-       
+        
         // parallax
         foreach(GameObject obj in backgrounds.Objects)
         {
-            if (obj.ID == "clouds")
-            {
-
-            }
-            else
+            if (obj.ID.Contains("mountain"))
             {
                 SpriteGameObject sprObj = obj as SpriteGameObject;
-                sprObj.Position = (cameraOrig - sprObj.Center) * sprObj.Layer/2f;
+                float sprObjMaxX = (width * tiles.CellWidth / 2.0f) + camera.Limits.Width * -sprObj.Layer/2;
+                sprObj.DrawPosition = new Vector2((cameraPos.X - (width * tiles.CellWidth / 2.0f)) * sprObj.Layer, 0);
+                // HAO 2 PARALLAX
             }
         }
 

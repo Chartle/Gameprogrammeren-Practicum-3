@@ -13,14 +13,14 @@ partial class Level : GameObjectList
         
         // load the backgrounds
         backgrounds = new GameObjectList(0, "backgrounds");
-        background_main = new SpriteGameObject("Backgrounds/spr_sky");
+        background_main = new SpriteGameObject("Backgrounds/spr_sky", -100);
         background_main.Position = new Vector2(0, GameEnvironment.Screen.Y - background_main.Height);
         backgrounds.Add(background_main);
         
         // add a few random mountains
-        for (int i = 0; i < 5; i++)
+        for (int i = -6; i < 1; i++)
         {
-            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), 1, "mountain" + i, 0, 2, 2);
+            SpriteGameObject mountain = new SpriteGameObject("Backgrounds/spr_mountain_" + (GameEnvironment.Random.Next(2) + 1), -i, "mountain" + i, 0, 2, 2);
             mountain.Position = new Vector2((float)GameEnvironment.Random.NextDouble() * GameEnvironment.Screen.X - mountain.Width / 2, GameEnvironment.Screen.Y - mountain.Height);
             backgrounds.Add(mountain);
         }
@@ -45,7 +45,7 @@ partial class Level : GameObjectList
         this.LoadTiles("Content/Levels/" + levelIndex + ".txt");
         foreach(SpriteGameObject bg in backgrounds.Objects)
         {
-            bg.Scale = new Vector2((width * tiles.CellWidth) / bg.Sprite.Width, (height * tiles.CellHeight) / bg.Sprite.Height);
+            bg.Scale = new Vector2(1,1);
         }
         Clouds clouds = new Clouds(2, "clouds");
         backgrounds.Add(clouds);

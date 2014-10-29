@@ -57,7 +57,7 @@ class Sparky : AnimatedGameObject
     public void CheckPlayerCollision()
     {
         Player player = GameWorld.Find("player") as Player;
-        if (this.CollidesWith(player) && idleTime <= 0.0f)
+        if (this.CollidesWith(player) && idleTime <= 0.0f && velocity.Y == 0)
             player.Die(false);
     }
 }
