@@ -2,7 +2,6 @@
 
 partial class Level : GameObjectList
 {
-    SpriteGameObject testobj = new SpriteGameObject("Sprites/Player/spr_explode@5x5", 190, "test", 8);
     Vector2 cameraPos, cameraOrig;
 
     public override void HandleInput(InputHelper inputHelper)
@@ -40,8 +39,10 @@ partial class Level : GameObjectList
             if (obj.ID.Contains("mountain"))
             {
                 SpriteGameObject sprObj = obj as SpriteGameObject;
-                float sprObjMaxX = (width * tiles.CellWidth / 2.0f) + camera.Limits.Width * -sprObj.Layer/2;
-                sprObj.DrawPosition = new Vector2((cameraPos.X - (width * tiles.CellWidth / 2.0f)) * sprObj.Layer, 0);
+
+                sprObj.Position = new Vector2(width * tiles.CellWidth / 2.0f - (sprObj.Sprite.Width * sprObj.Scale.X) / 2.0f + (sprObj.Layer)*(float)gameTime.TotalGameTime.Milliseconds,
+                                             height * tiles.CellHeight - sprObj.Sprite.Height * sprObj.Scale.Y);
+                
                 // HAO 2 PARALLAX
             }
         }
