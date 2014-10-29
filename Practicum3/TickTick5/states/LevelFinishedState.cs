@@ -5,11 +5,11 @@ using Microsoft.Xna.Framework.Input;
 class LevelFinishedState : GameObjectList
 {
     protected IGameLoopObject playingState;
-
+    protected SpriteGameObject overlay;
     public LevelFinishedState()
     {
         playingState = GameEnvironment.GameStateManager.GetGameState("playingState");
-        SpriteGameObject overlay = new SpriteGameObject("Overlays/spr_welldone");
+        overlay = new SpriteGameObject("Overlays/spr_welldone");
         overlay.Position = new Vector2(GameEnvironment.Screen.X, GameEnvironment.Screen.Y) / 2 - overlay.Center;
         this.Add(overlay);
     }
@@ -24,6 +24,7 @@ class LevelFinishedState : GameObjectList
 
     public override void Update(GameTime gameTime, Camera2D camera)
     {
+        overlay.Position = camera.Position + new Vector2(GameEnvironment.Screen.X, GameEnvironment.Screen.Y) / 2 - overlay.Center;
         playingState.Update(gameTime, camera);
     }
 

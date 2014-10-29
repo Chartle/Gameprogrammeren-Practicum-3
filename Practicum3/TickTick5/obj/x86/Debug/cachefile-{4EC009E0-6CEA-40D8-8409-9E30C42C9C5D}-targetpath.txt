@@ -53,7 +53,7 @@ Content\Sounds\snd_music.wma
 Content\Levels\1.txt
 Content\Levels\8.txt
 Content\Levels\2.txt
-Content\Levels\10.txt
+Content\Levels\11.txt
 Content\Levels\3.txt
 Content\Levels\5.txt
 Content\Levels\4.txt
@@ -61,3 +61,4 @@ Content\Levels\6.txt
 Content\Levels\7.txt
 Content\Levels\9.txt
 Content\Levels\levels_status.txt
+Content\Levels\10.txt

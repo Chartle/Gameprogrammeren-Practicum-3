@@ -6,12 +6,13 @@ partial class Level : GameObjectList
     protected Button quitButton;
     protected SpriteGameObject timerBackground, background_main;
     protected TimerGameObject timer;
+    protected GameObjectList backgrounds;
 
     public Level(int levelIndex)
     {        
         
         // load the backgrounds
-        GameObjectList backgrounds = new GameObjectList(0, "backgrounds");
+        backgrounds = new GameObjectList(0, "backgrounds");
         background_main = new SpriteGameObject("Backgrounds/spr_sky");
         background_main.Position = new Vector2(0, GameEnvironment.Screen.Y - background_main.Height);
         backgrounds.Add(background_main);
@@ -44,10 +45,11 @@ partial class Level : GameObjectList
         this.LoadTiles("Content/Levels/" + levelIndex + ".txt");
         foreach(SpriteGameObject bg in backgrounds.Objects)
         {
-            bg.Scale = new Vector2(width/15, height/10);
+            bg.Scale = new Vector2((width * tiles.CellWidth) / bg.Sprite.Width, (height * tiles.CellHeight) / bg.Sprite.Height);
         }
-        Clouds clouds = new Clouds(2);
+        Clouds clouds = new Clouds(2, "clouds");
         backgrounds.Add(clouds);
+        background_main.Scale = new Vector2(width / 15, height / 10);
     }
 
     public bool Completed
@@ -86,6 +88,16 @@ partial class Level : GameObjectList
     {
         get { return solved; }
         set { solved = value; }
+    }
+
+    public int Width
+    {
+        get { return width; }
+    }
+
+    public int Height
+    {
+        get { return height; }
     }
 }
 

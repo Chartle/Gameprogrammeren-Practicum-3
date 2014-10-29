@@ -5,7 +5,6 @@ class Clouds : GameObjectList
     public Clouds(int layer = 0, string id = "")
         : base(layer, id)
     {
-        Level currLevel = (TickTick.GameStateManager.GetGameState("playingState") as PlayingState).CurrentLevel;
         for (int i = 0; i < 3; i++)
         {
             SpriteGameObject cloud = new SpriteGameObject("Backgrounds/spr_cloud_" + (GameEnvironment.Random.Next(5) + 1), 2);

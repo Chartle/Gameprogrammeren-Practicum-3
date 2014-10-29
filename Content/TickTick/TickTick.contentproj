@@ -278,8 +278,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Levels\10.txt">
-      <Name>10</Name>
+    <None Include="Levels\11.txt">
+      <Name>11</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Levels\3.txt">
@@ -409,6 +409,12 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Levels\10.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>10</Name>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
